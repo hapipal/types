@@ -4,9 +4,6 @@
   "workspaces": [
     "types/*"
   ],
-  "scripts": {
-    "test": "ls types | xargs dtslint types"
-  },
   "description": "TypeScript type definitions for hapi pal",
   "repository": {
     "type": "git",
