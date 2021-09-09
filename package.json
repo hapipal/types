@@ -1,0 +1,21 @@
+{
+  "name": "@hapipal/types",
+  "private": true,
+  "workspaces": [
+    "types/*"
+  ],
+  "scripts": {
+    "test": "ls types | xargs dtslint types"
+  },
+  "description": "TypeScript type definitions for hapi pal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hapipal/types.git"
+  },
+  "author": "Devin Ivy <devin@bigroomstudios.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hapipal/types/issues"
+  },
+  "homepage": "https://github.com/hapipal/types#readme"
+}
