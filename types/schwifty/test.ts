@@ -10,15 +10,15 @@ export declare type TypeScriptVersion = '4.0' | '4.1' | '4.2' | '4.3' | '4.4' | 
 declare module '@hapipal/schwifty' {
 
     type AuthModels = {
-        Members: Schwifty.Model
-        Admin: Schwifty.Model
-        Mananger: Schwifty.Model
+        Members: Schwifty.ModelClass
+        Admin: Schwifty.ModelClass
+        Mananger: Schwifty.ModelClass
     }
 
     type OathModels = {
-        Witness: Schwifty.Model
-        Promissory: Schwifty.Model
-        CrownCourt: Schwifty.Model
+        Witness: Schwifty.ModelClass
+        Promissory: Schwifty.ModelClass
+        CrownCourt: Schwifty.ModelClass
     }
 
     interface SchwiftyDecorator {
