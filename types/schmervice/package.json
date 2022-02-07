@@ -1,0 +1,23 @@
+{
+    "name": "@hapipal/types-schmervice",
+    "version": "6.1.0",
+    "types": "index.d.ts",
+    "scripts": {
+        "test": "dtslint ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hapipal/types.git",
+        "directory": "types/schmervice"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hapipal/types/issues"
+    },
+    "homepage": "https://github.com/hapipal/types/tree/main/types/schmervice",
+    "dependencies": {
+        "@types/hapi__boom": "9.x.x",
+        "@types/hapi__hapi": "20.x.x",
+        "joi": "^17.6.0"
+    }
+}

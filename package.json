@@ -14,5 +14,19 @@
   "bugs": {
     "url": "https://github.com/hapipal/types/issues"
   },
-  "homepage": "https://github.com/hapipal/types#readme"
+  "homepage": "https://github.com/hapipal/types#readme",
+  "dependencies": {
+    "@definitelytyped/dtslint": "^0.0.103",
+    "@types/hapi__boom": "^9.0.1",
+    "@types/hapi__hapi": "^20.0.10",
+    "@types/hapi__nes": "^11.0.5",
+    "@types/hapi__vision": "^5.5.3",
+    "joi": "^17.6.0",
+    "knex": "^1.0.2",
+    "objection": "^3.0.1",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "test": "tsc --noEmit -p ."
+  }
 }

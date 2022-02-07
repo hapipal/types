@@ -1,0 +1,24 @@
+{
+    "name": "@hapipal/types-schwifty",
+    "types": "index.d.ts",
+    "scripts": {
+        "test": "dtslint --expectOnly ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hapipal/types.git",
+        "directory": "types/schwifty"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hapipal/types/issues"
+    },
+    "homepage": "https://github.com/hapipal/types/tree/main/types/schwifty",
+    "dependencies": {
+        "joi": "^17",
+        "knex": "^1",
+        "objection": "^3",
+        "@types/hapi__boom": "9.x.x",
+        "@types/hapi__hapi": "20.x.x"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "@hapipal/types-haute-couture",
+    "version": "2.0.0",
+    "scripts": {
+        "test": "dtslint ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hapipal/types.git",
+        "directory": "types/haute-couture"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hapipal/types/issues"
+    },
+    "homepage": "https://github.com/hapipal/types/tree/main/types/haute-couture",
+    "dependencies": {
+        "joi": "^17.6.0",
+        "@types/hapi__boom": "9.x.x",
+        "@types/hapi__hapi": "20.x.x",
+        "@hapipal/types-schmervice": "9.x.x",
+        "@hapipal/types-schwifty": "20.x.x"
+    },
+    "devDependencies": {
+        "@hapipal/types-schmervice": "file:../schmervice",
+        "@hapipal/types-schwifty": "file:../schwifty"
+    }
+}

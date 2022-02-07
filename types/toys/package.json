@@ -20,10 +20,5 @@
   "dependencies": {
     "@types/hapi__boom": "9.x.x",
     "@types/hapi__hapi": "20.x.x"
-  },
-  "devDependencies": {
-    "@hapi/boom": "9.x.x",
-    "@hapi/hapi": "20.x.x",
-    "dtslint": "^4.1.6"
   }
 }
