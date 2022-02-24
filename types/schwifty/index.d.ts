@@ -3,13 +3,12 @@
 // Definitions by: ozum <https://github.com/ozum>
 //                 timcosta <https://github.com/timcosta>
 //                 damusix <https://github.com/damusix>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 3.0
+// TypeScript Version: 4
 
-import * as Joi from "joi";
-import { Server, Request, ResponseToolkit, Plugin } from "@hapi/hapi";
-import { Knex } from "knex";
-import { Model as ObjectionModel } from "objection";
+import * as Joi from 'joi';
+import { Plugin } from '@hapi/hapi';
+import { Knex } from 'knex';
+import { Model as ObjectionModel } from 'objection';
 
 export type ModelClass = typeof Model | typeof ObjectionModel;
 
@@ -18,7 +17,6 @@ export class Model extends ObjectionModel {
     static field(name: string): Joi.Schema;
     static joiSchema: Joi.Schema;
     static joiSchemaPatch: Joi.Schema;
-
 }
 
 export interface RegistrationOptions {
@@ -26,7 +24,7 @@ export interface RegistrationOptions {
     models?: ModelClass[] | string | undefined;
     migrationsDir?: string | undefined;
     teardownOnStop?: boolean | undefined;
-    migrateOnStart?: boolean | "latest" | "rollback" | undefined;
+    migrateOnStart?: boolean | 'latest' | 'rollback' | undefined;
 }
 
 export function assertCompatible(
@@ -34,14 +32,12 @@ export function assertCompatible(
     ModelB: typeof Model,
     message?: string
 ): void | Error;
-
 export const plugin: Plugin<RegistrationOptions>;
 
 export const migrationsStubPath: string;
 
 export const sandbox: Symbol;
 export const bindKnex: Symbol;
-
 export interface RegisteredModels {
     [key: string]: ModelClass;
 }
@@ -87,34 +83,4 @@ export interface SchwiftyDecorator {
 
     (all?: boolean): RegisteredModels
     (namespace?: string): RegisteredModels
-}
-
-/**
- * Merge decorations into hapi objects.
- */
-declare module "@hapi/hapi" {
-    interface Server {
-        schwifty: (
-            config:
-                | ModelClass
-                | ModelClass[]
-                | {
-                      knex: Knex | Knex.Config;
-                      models: ModelClass[];
-                      migrationsDir: string;
-                  }
-        ) => void;
-        knex: () => Knex;
-        models: SchwiftyDecorator;
-    }
-
-    interface Request {
-        knex: () => Knex;
-        models: SchwiftyDecorator;
-    }
-
-    interface ResponseToolkit {
-        knex: () => Knex;
-        models: SchwiftyDecorator;
-    }
 }

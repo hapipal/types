@@ -1,7 +1,7 @@
 {
-  "name": "@hapipal/types-toys",
+  "name": "@hapipal/types-confidence",
   "version": "0.1.0",
-  "description": "TypeScript type definitions for @hapipal/toys",
+  "description": "TypeScript type definitions for @hapipal/confidence",
   "main": "",
   "types": "index.d.ts",
   "scripts": {
@@ -16,9 +16,5 @@
   "bugs": {
     "url": "https://github.com/hapipal/types/issues"
   },
-  "homepage": "https://github.com/hapipal/types/tree/main/types/toys",
-  "dependencies": {
-    "@types/hapi__boom": "9.x.x",
-    "@types/hapi__hapi": "20.x.x"
-  }
+  "homepage": "https://github.com/hapipal/types/tree/main/types/toys"
 }

@@ -1,6 +1,7 @@
 {
     "name": "@hapipal/types-avocat",
-    "version": "3.0.0",
+    "version": "0.1.0",
+    "types": "index.d.ts",
     "dependencies": {
         "@hapi/boom": "^9.1.1"
     }

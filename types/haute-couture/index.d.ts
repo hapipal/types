@@ -1,7 +1,3 @@
-// Type definitions for @hapipal/haute-couture 4.2.0
-// Project: https://github.com/hapipal/haute-couture#readme
-// Definitions by: Danilo Alonso <https://github.com/damusix>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 import {
     Plugin as HapiPlugin,
@@ -10,7 +6,6 @@ import {
     ServerMethod,
     ServerMethods,
     ServerCache,
-    ServerOptionsCache,
     ServerAuth,
     ServerAuthScheme,
     Dependencies,
@@ -18,7 +13,6 @@ import {
     HandlerDecorationMethod,
     ServerMethodOptions,
     CachePolicyOptions,
-    RouteOptions,
     ServerStateCookieOptions,
     ServerExtType,
     ServerRequestExtType,
@@ -36,7 +30,7 @@ import { ServerSubscriptionOptions } from '@hapi/nes';
 
 import { Service, ServiceFactory, ServiceRegistrationObject } from '@hapipal/schmervice';
 import { ModelClass } from '@hapipal/schwifty';
-import { Root as Joi } from 'joi'
+import { Root as Joi } from 'joi';
 
 type OneOrArrayOf<T> = T | T[];
 
@@ -118,7 +112,7 @@ type AllAmendmentMethods = (
 
 // Turn the union of those strings into a type
 type AmendmentMethodFilter = {
-    [key in AllAmendmentMethods]: never
+    [_key in AllAmendmentMethods]: never
 }
 
 // Omit any methods or properties that cannot
@@ -166,18 +160,19 @@ interface AmendmentExample {
 
 // Amendment return type
 export type AmendmentConfig<
-    T = {}
+    T = Record<string, unknown>
 > = {
     method: AmendmentMethods,
     signature?: (keyof T | `[${string & keyof T}]`)[] | string[],
     list: boolean,
-    after?: string[],
     useFilename: (value: T | T[], path: string, filename: string) => T | T[],
-    example: AmendmentExampleType
+    example: AmendmentExampleType,
+    after?: string[],
+    recursive?: boolean
 }
 
 // Amendment configuration override
-export type CustomAmendmentConfig<T = {}> = Partial<AmendmentConfig<T>>
+export type CustomAmendmentConfig<T = Record<string, unknown>> = Partial<AmendmentConfig<T>>
 
 // Types that a place enforces
 export type PlaceTypes = {
@@ -233,7 +228,7 @@ export function amendment <P extends keyof InternalAmemdments>(
 
 export function amendments <O extends Record<keyof InternalAmemdments, AmendmentConfig>> (overrides: O): O
 
-export interface HcComposeFunction<ReturnType, Options = {}> {
+export interface HcComposeFunction<ReturnType, Options = Record<string, unknown>> {
 
     (server: Server, options: Options): ReturnType
 }
@@ -245,6 +240,6 @@ type ComposeOptions = {
     }
 }
 
-export function compose <Options = {}> (server: Server, options: Options, composeOptions?: ComposeOptions): Promise<void>
+export function compose <Options = Record<string, unknown>> (server: Server, options: Options, composeOptions?: ComposeOptions): Promise<void>
 
-export function composeWith <Options = {}> (composeOptions: ComposeOptions): HcComposeFunction<Promise<void>, Options>
+export function composeWith <Options = Record<string, unknown>> (composeOptions: ComposeOptions): HcComposeFunction<Promise<void>, Options>

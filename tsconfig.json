@@ -33,5 +33,8 @@
 
         "./types/toys/index.d.ts",
         "./types/toys/test.ts",
+
+        "./types/confidence/index.d.ts",
+        "./types/confidence/test.ts",
     ]
 }

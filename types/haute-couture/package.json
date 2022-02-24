@@ -1,6 +1,6 @@
 {
     "name": "@hapipal/types-haute-couture",
-    "version": "2.0.0",
+    "version": "0.1.0",
     "scripts": {
         "test": "dtslint ."
     },
@@ -19,7 +19,7 @@
         "@types/hapi__boom": "9.x.x",
         "@types/hapi__hapi": "20.x.x",
         "@hapipal/types-schmervice": "9.x.x",
-        "@hapipal/types-schwifty": "20.x.x"
+        "@hapipal/types-schwifty": "6.x.x"
     },
     "devDependencies": {
         "@hapipal/types-schmervice": "file:../schmervice",

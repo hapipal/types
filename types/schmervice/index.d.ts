@@ -3,9 +3,14 @@
 // Definitions by: Tim Costa <https://github.com/timcosta>
 //                 Danilo Alonso <https://github.com/damusix>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// Minimum TypeScript Version: 3.6
+// Minimum TypeScript Version: 4
 
-import { Plugin, Server, ServerOptionsCache, ServerMethodOptions } from '@hapi/hapi';
+import {
+    Plugin,
+    Server as HapiServer,
+    ServerOptionsCache,
+    ServerMethodOptions
+} from '@hapi/hapi';
 
 export const name: unique symbol;
 export const sandbox: unique symbol;
@@ -27,7 +32,7 @@ export interface ServiceRegistrationObject {
     [serviceMethod: string]: any;
 }
 
-export function ServiceFactory(server: Server, options: object): ServiceRegistrationObject;
+export function ServiceFactory(server: HapiServer, options: object): ServiceRegistrationObject;
 
 // options is any because it's left to the implementer to define based on usage
 export type ServiceOptions = any;
@@ -36,9 +41,9 @@ export class Service {
     static caching: ServiceCachingOptions;
     static [name]: string;
     static [sandbox]: ServiceSandbox;
-    server: Server;
+    server: HapiServer;
     options: ServiceOptions;
-    constructor(server: Server, options: ServiceOptions);
+    constructor(server: HapiServer, options: ServiceOptions);
     // object matches https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/hapi__hapi/index.d.ts#L3104
     // null matches else case in schmervice
     get context(): object | null;
@@ -50,7 +55,7 @@ export class Service {
 
 export type RegisterServiceConfiguration = (typeof ServiceFactory | Service | Service[] | ServiceRegistrationObject);
 
-export const plugin: Plugin<{}>;
+export const plugin: Plugin<Record<string, unknown>>;
 
 export interface WithNameOptions {
     sandbox?: ServiceSandbox | undefined;
@@ -101,24 +106,8 @@ export interface RegisteredServices {
  * }
  *
  */
- export interface SchmerviceDecorator {
+export interface SchmerviceDecorator {
 
     (all?: boolean): RegisteredServices
     (namespace?: string): RegisteredServices
-}
-
-// sets up types for the functions added via hapi decorations
-declare module '@hapi/hapi' {
-    interface Server {
-        registerService: (config: RegisterServiceConfiguration) => void;
-        services: SchmerviceDecorator;
-    }
-
-    interface Request {
-        services: SchmerviceDecorator;
-    }
-
-    interface ResponseToolkit {
-        services: SchmerviceDecorator;
-    }
 }
