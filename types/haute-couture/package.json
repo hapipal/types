@@ -1,9 +1,11 @@
 {
     "name": "@hapipal/types-haute-couture",
+    "description": "TypeScript type definitions for @hapipal/haute-couture",
     "version": "0.0.0",
     "scripts": {
-        "test": "dtslint ."
+        "test": "tsc"
     },
+    "types": "index.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hapipal/types.git",
@@ -15,14 +17,12 @@
     },
     "homepage": "https://github.com/hapipal/types/tree/main/types/haute-couture",
     "dependencies": {
-        "joi": "^17.6.0",
+        "@hapipal/types-schmervice": "0.0.0",
+        "@hapipal/types-schwifty": "0.0.0",
         "@types/hapi__boom": "9.x.x",
         "@types/hapi__hapi": "20.x.x",
-        "@hapipal/types-schmervice": "9.x.x",
-        "@hapipal/types-schwifty": "6.x.x"
-    },
-    "devDependencies": {
-        "@hapipal/types-schmervice": "file:../schmervice",
-        "@hapipal/types-schwifty": "file:../schwifty"
+        "@types/hapi__nes": "^11.0.5",
+        "@types/hapi__vision": "^5.5.3",
+        "joi": "^17.6.0"
     }
 }

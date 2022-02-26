@@ -111,3 +111,21 @@ export interface SchmerviceDecorator {
     (all?: boolean): RegisteredServices
     (namespace?: string): RegisteredServices
 }
+
+
+
+declare module '@hapi/hapi' {
+
+    interface Server {
+        registerService: (config: RegisterServiceConfiguration) => void;
+        services: SchmerviceDecorator;
+    }
+
+    interface Request {
+        services: SchmerviceDecorator;
+    }
+
+    interface ResponseToolkit {
+        services: SchmerviceDecorator;
+    }
+}

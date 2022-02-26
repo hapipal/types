@@ -2,10 +2,10 @@
   "name": "@hapipal/types-confidence",
   "version": "0.0.0",
   "description": "TypeScript type definitions for @hapipal/confidence",
-  "main": "",
+  "private": "true",
   "types": "index.d.ts",
   "scripts": {
-    "test": "dtslint ."
+    "test": "tsc"
   },
   "repository": {
     "type": "git",

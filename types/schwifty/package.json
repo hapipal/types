@@ -1,9 +1,11 @@
 {
     "name": "@hapipal/types-schwifty",
+    "description": "TypeScript type definitions for @hapipal/schwifty",
     "version": "0.0.0",
     "types": "index.d.ts",
+    "private": "true",
     "scripts": {
-        "test": "dtslint --expectOnly ."
+        "test": "tsc"
     },
     "repository": {
         "type": "git",

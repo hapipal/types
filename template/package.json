@@ -1,7 +1,7 @@
 {
-    "name": "@hapipal/types-avocat",
+    "name": "@hapipal/types-[name]",
     "version": "0.0.0",
-    "description": "TypeScript type definitions for @hapipal/avocat",
+    "description": "TypeScript type definitions for @hapipal/[name]",
     "main": "",
     "types": "index.d.ts",
     "scripts": {
@@ -10,11 +10,11 @@
     "repository": {
       "type": "git",
       "url": "git+https://github.com/hapipal/types.git",
-      "directory": "types/avocat"
+      "directory": "types/[name]"
     },
     "license": "MIT",
     "bugs": {
       "url": "https://github.com/hapipal/types/issues"
     },
-    "homepage": "https://github.com/hapipal/types/tree/main/types/avocat"
+    "homepage": "https://github.com/hapipal/types/tree/main/types/[name]"
 }

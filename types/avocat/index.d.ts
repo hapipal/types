@@ -1,7 +1,6 @@
 // Type definitions for @hapipal/avocat 3.0
 // Project: https://github.com/hapipal/avocat#readme
 // Definitions by: Tim Costa <https://github.com/timcosta>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 import { ResponseObject } from '@hapi/hapi';
 import { Boom } from '@hapi/boom';

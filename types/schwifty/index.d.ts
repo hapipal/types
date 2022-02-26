@@ -84,3 +84,34 @@ export interface SchwiftyDecorator {
     (all?: boolean): RegisteredModels
     (namespace?: string): RegisteredModels
 }
+
+
+
+declare module '@hapi/hapi' {
+
+    interface Server {
+        schwifty: (
+            config:
+                | ModelClass
+                | ModelClass[]
+                | {
+                      knex: Knex | Knex.Config;
+                      models: ModelClass[];
+                      migrationsDir: string;
+                  }
+        ) => void;
+        knex: () => Knex;
+        models: SchwiftyDecorator;
+
+    }
+
+    interface Request {
+        knex: () => Knex;
+        models: SchwiftyDecorator;
+    }
+
+    interface ResponseToolkit {
+        knex: () => Knex;
+        models: SchwiftyDecorator;
+    }
+}

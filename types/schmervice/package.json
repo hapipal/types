@@ -1,9 +1,10 @@
 {
     "name": "@hapipal/types-schmervice",
+    "description": "TypeScript type definitions for @hapipal/schmervice",
     "version": "0.0.0",
     "types": "index.d.ts",
     "scripts": {
-        "test": "dtslint ."
+        "test": "tsc"
     },
     "repository": {
         "type": "git",
