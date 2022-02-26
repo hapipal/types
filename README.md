@@ -30,3 +30,13 @@ Copy the template so you just have to replace `[name]` and `[version]` in all fi
 ``` sh
 cp -R teamplate types/[name]
 ```
+
+### Pushing a WIP
+
+If you have a WIP branch going, you can bypass husky git hooks until you are ready to make your final commit
+
+```
+git add .
+git commit -m 'chore: WIP: checking in code'
+git push origin [my branch] --no-verify
+```
