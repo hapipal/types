@@ -1,6 +1,6 @@
 {
   "name": "@hapipal/types-toys",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "TypeScript type definitions for @hapipal/toys",
   "main": "",
   "types": "index.d.ts",

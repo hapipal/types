@@ -1,20 +1,20 @@
 {
     "name": "@hapipal/types-avocat",
-    "version": "0.0.0",
+    "version": "0.0.1-alpha.0",
     "description": "TypeScript type definitions for @hapipal/avocat",
     "main": "",
     "types": "index.d.ts",
     "scripts": {
-      "test": "tsc"
+        "test": "tsc"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/hapipal/types.git",
-      "directory": "types/avocat"
+        "type": "git",
+        "url": "git+https://github.com/hapipal/types.git",
+        "directory": "types/avocat"
     },
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/hapipal/types/issues"
+        "url": "https://github.com/hapipal/types/issues"
     },
     "homepage": "https://github.com/hapipal/types/tree/main/types/avocat"
 }

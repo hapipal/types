@@ -1,9 +1,8 @@
 {
     "name": "@hapipal/types-schwifty",
     "description": "TypeScript type definitions for @hapipal/schwifty",
-    "version": "0.0.0",
+    "version": "0.0.1-alpha.0",
     "types": "index.d.ts",
-    "private": "true",
     "scripts": {
         "test": "tsc"
     },
