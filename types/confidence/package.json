@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hapipal/types/issues"
   },
-  "homepage": "https://github.com/hapipal/types/tree/main/types/confidence"
+  "homepage": "https://github.com/hapipal/types/tree/main/types/confidence",
+  "dependencies": {
+    "@types/node": ">=10"
+  }
 }

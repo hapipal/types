@@ -1,11 +1,12 @@
 import * as Hapi from "@hapi/hapi";
-import * as Joi from "joi";
 import * as Schwifty from "@hapipal/schwifty";
 
 
 import DogModel from "./test/dog";
 
 export declare type TypeScriptVersion = '4.0' | '4.1' | '4.2' | '4.3' | '4.4' | '4.5';
+
+
 
 declare module '@hapipal/schwifty' {
 
