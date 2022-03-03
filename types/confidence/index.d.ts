@@ -3,157 +3,154 @@
  * ! are accepted publicly.
  */
 
- declare module '@hapipal/confidence' {
+type keyOfRandom = (
+    'a' | 'b' | 'c' | 'd' | 'e' |
+    'f' | 'g' | 'h' | 'i' | 'j' |
+    'k' | 'l' | 'm' | 'n'
+)
 
-    type keyOfRandom = (
-        'a' | 'b' | 'c' | 'd' | 'e' |
-        'f' | 'g' | 'h' | 'i' | 'j' |
-        'k' | 'l' | 'm' | 'n'
-    )
+export interface id {
 
-    export interface id {
+    /**
+     * Generates a random UUID
+     */
+    generate(): string
 
-        /**
-         * Generates a random UUID
-         */
-        generate(): string
-
-        criteria <U extends string>(uuid: U): {
-            $id: U,
-            random: Record<keyOfRandom, number>
-        }
+    criteria <U extends string>(uuid: U): {
+        $id: U,
+        random: Record<keyOfRandom, number>
     }
+}
 
-    type KeyValsAsType<T> = {
-        [
-            K in keyof T as T[K] extends string ? (
-                string extends T[K] ? never : T[K]
-            ) : never
-        ]?: AllowedValues<T>
-    };
-
-    type AllowedValues<Criteria> = (
-        number | string | boolean |
-        Array<any> | typeof Function |
-        Schema<Criteria>
-    );
-
-    type Schema<Criteria> = {
-        $param: keyof Criteria,
-        $value?: AllowedValues<Criteria>
-        $replace?: 'true' | true,
-        $env?: keyof Criteria
-        $coerce?: 'number' | 'array' | 'boolean' | 'object'
-        $splitToken?: string | RegExp
-        $filter?: keyof Criteria | { $env: keyof NodeJS.ProcessEnv },
-        $base?: AllowedValues<Criteria>,
-        $default?: AllowedValues<Criteria>
-        $id?: string,
-        $range?: {
-            limit: number,
-            value: AllowedValues<Criteria>,
-            id: string
-        }[]
-        $meta?: object | string,
-    } | KeyValsAsType<Criteria>
-
-    type ValueOf<T> = T[keyof T];
-
-    type FilterType<C, T extends string> = {
-        $filter?: C,
-    } | Record<T, string>
-
-    type InferFromObject<T, K extends keyof T = keyof T> = T[K] extends infer C ? C : T[K];
-
-    /**
-     *
-     */
-    type ConfidenceStore<
-        Criteria,
-        ReturnType,
-        Parent = unknown
-    > = (
-        {
-            [K in keyof ReturnType]: ConfidenceStore<
-                Criteria,
-                ReturnType[K]
-            > | Schema<Criteria>
-        } |
-        {
-            [K in keyof Schema<Criteria>]: (
-                ConfidenceStore<Criteria, ReturnType> |
-                KeyValsAsType<Criteria>
-            )
-        }
-    );
-
-    /**
-     * Finds the '/' slash path in a type starting from the
-     * beginning. This type appends the `/` to the root level
-     * of the types and then calls the `PathImplMid` type for
-     * the middle paths. The separation allows us to  guess
-     * that `{ a: { b: { c: true }}}` is the path `/a/b/c`
-     * and not `/a//b//c`.
-     */
-    type PathImplementation<T, K extends keyof T> = (
-        K extends string ? (
-            T[K] extends Record<string, any> ? (
-                T[K] extends ArrayLike<any> ? (
-                    `/${K}` | `/${K}/${PathImplMid<T[K], Exclude<keyof T[K], keyof any[]>>}`
-                ) : (
-                    `/${K}` | `/${K}/${PathImplMid<T[K], keyof T[K]>}`
-                )
-            ) : `/${K}`
+type KeyValsAsType<T> = {
+    [
+        K in keyof T as T[K] extends string ? (
+            string extends T[K] ? never : T[K]
         ) : never
-    );
+    ]?: AllowedValues<T>
+};
 
-    /**
-     * This generates the mid-path slash commands for `PathImplementation`
-     */
-    type PathImplMid<T, K extends keyof T> = (
-        K extends string ? (
-            T[K] extends Record<string, any> ? (
-                T[K] extends ArrayLike<any> ? (
-                    K | `${K}/${PathImplMid<T[K], Exclude<keyof T[K], keyof any[]>>}`
-                ) : (
-                    K | `${K}/${PathImplMid<T[K], keyof T[K]>}`
-                )
-            ) : K
-        ) : never
-    );
+type AllowedValues<Criteria> = (
+    number | string | boolean |
+    Array<any> | typeof Function |
+    Schema<Criteria>
+);
 
-    // The actual path implementation
-    type Path<T> = '/' | PathImplementation<T, keyof T>;
+type Schema<Criteria> = {
+    $param: keyof Criteria,
+    $value?: AllowedValues<Criteria>
+    $replace?: 'true' | true,
+    $env?: keyof Criteria
+    $coerce?: 'number' | 'array' | 'boolean' | 'object'
+    $splitToken?: string | RegExp
+    $filter?: keyof Criteria | { $env: keyof NodeJS.ProcessEnv },
+    $base?: AllowedValues<Criteria>,
+    $default?: AllowedValues<Criteria>
+    $id?: string,
+    $range?: {
+        limit: number,
+        value: AllowedValues<Criteria>,
+        id: string
+    }[]
+    $meta?: object | string,
+} | KeyValsAsType<Criteria>
 
-    type PathValueImp<T, P extends Path<T>> =  P extends `/${infer UKey}` ? (
-        P extends `/${infer LKey}/${infer Rest}` ? (
-            LKey extends keyof T ? (
-                Rest extends keyof T[LKey] ? (
-                    T[LKey][Rest]
-                ) : (
-                    `/${Rest}` extends Path<T[LKey]> ? (
-                        PathValueImp<T[LKey], `/${Rest}`>
-                    ) : never
-                )
-            ) : never
-        ) : (
-            UKey extends keyof T ? T[UKey] : never
+type ValueOf<T> = T[keyof T];
+
+type FilterType<C, T extends string> = {
+    $filter?: C,
+} | Record<T, string>
+
+type InferFromObject<T, K extends keyof T = keyof T> = T[K] extends infer C ? C : T[K];
+
+/**
+ *
+ */
+type ConfidenceStore<
+    Criteria,
+    ReturnType,
+    Parent = unknown
+> = (
+    {
+        [K in keyof ReturnType]: ConfidenceStore<
+            Criteria,
+            ReturnType[K]
+        > | Schema<Criteria>
+    } |
+    {
+        [K in keyof Schema<Criteria>]: (
+            ConfidenceStore<Criteria, ReturnType> |
+            KeyValsAsType<Criteria>
         )
-    ) : never
-
-    type PathValue<T, P extends Path<T>> = P extends '/' ? T : PathValueImp<T, P>
-
-    export class Store<Criteria, ReturnType> {
-
-        constructor (document: ConfidenceStore<Criteria, ReturnType>);
-
-        load(document: ConfidenceStore<Criteria, ReturnType>): void;
-
-        get <K extends Path<ReturnType>> (key: K, criteria: Criteria): PathValue<ReturnType, K>
-
-        meta <K extends Path<ReturnType> = '/'>(key: K, criteria: Criteria): any;
-
-        static validate <T extends ConfidenceStore<any, any>>(node: T): Error | null;
-
     }
+);
+
+/**
+ * Finds the '/' slash path in a type starting from the
+ * beginning. This type appends the `/` to the root level
+ * of the types and then calls the `PathImplMid` type for
+ * the middle paths. The separation allows us to  guess
+ * that `{ a: { b: { c: true }}}` is the path `/a/b/c`
+ * and not `/a//b//c`.
+ */
+type PathImplementation<T, K extends keyof T> = (
+    K extends string ? (
+        T[K] extends Record<string, any> ? (
+            T[K] extends ArrayLike<any> ? (
+                `/${K}` | `/${K}/${PathImplMid<T[K], Exclude<keyof T[K], keyof any[]>>}`
+            ) : (
+                `/${K}` | `/${K}/${PathImplMid<T[K], keyof T[K]>}`
+            )
+        ) : `/${K}`
+    ) : never
+);
+
+/**
+ * This generates the mid-path slash commands for `PathImplementation`
+ */
+type PathImplMid<T, K extends keyof T> = (
+    K extends string ? (
+        T[K] extends Record<string, any> ? (
+            T[K] extends ArrayLike<any> ? (
+                K | `${K}/${PathImplMid<T[K], Exclude<keyof T[K], keyof any[]>>}`
+            ) : (
+                K | `${K}/${PathImplMid<T[K], keyof T[K]>}`
+            )
+        ) : K
+    ) : never
+);
+
+// The actual path implementation
+type Path<T> = '/' | PathImplementation<T, keyof T>;
+
+type PathValueImp<T, P extends Path<T>> =  P extends `/${infer UKey}` ? (
+    P extends `/${infer LKey}/${infer Rest}` ? (
+        LKey extends keyof T ? (
+            Rest extends keyof T[LKey] ? (
+                T[LKey][Rest]
+            ) : (
+                `/${Rest}` extends Path<T[LKey]> ? (
+                    PathValueImp<T[LKey], `/${Rest}`>
+                ) : never
+            )
+        ) : never
+    ) : (
+        UKey extends keyof T ? T[UKey] : never
+    )
+) : never
+
+type PathValue<T, P extends Path<T>> = P extends '/' ? T : PathValueImp<T, P>
+
+export class Store<Criteria, ReturnType> {
+
+    constructor (document: ConfidenceStore<Criteria, ReturnType>);
+
+    load(document: ConfidenceStore<Criteria, ReturnType>): void;
+
+    get <K extends Path<ReturnType>> (key: K, criteria: Criteria): PathValue<ReturnType, K>
+
+    meta <K extends Path<ReturnType> = '/'>(key: K, criteria: Criteria): any;
+
+    static validate <T extends ConfidenceStore<any, any>>(node: T): Error | null;
+
 }

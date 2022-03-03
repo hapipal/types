@@ -1,7 +1,7 @@
 {
     "name": "@hapipal/types-haute-couture",
     "description": "TypeScript type definitions for @hapipal/haute-couture",
-    "version": "0.0.1-alpha.0",
+    "version": "0.0.1-alpha.1",
     "scripts": {
         "test": "tsc"
     },
@@ -17,8 +17,8 @@
     },
     "homepage": "https://github.com/hapipal/types/tree/main/types/haute-couture",
     "dependencies": {
-        "@hapipal/types-schmervice": "0.0.0-alpha.0",
-        "@hapipal/types-schwifty": "0.0.0-alpha.0",
+        "@hapipal/types-schmervice": "0.0.1-alpha.0",
+        "@hapipal/types-schwifty": "0.0.1-alpha.0",
         "@types/hapi__boom": "9.x.x",
         "@types/hapi__hapi": "20.x.x",
         "@types/hapi__nes": "^11.0.5",
