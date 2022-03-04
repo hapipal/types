@@ -30,7 +30,8 @@
     "test": "npm run libcheck && npm run test:workspaces",
     "test:workspaces": "npm run test --workspaces --if-present",
     "libcheck": "node ./scripts/properLibSetup",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "bump": "./scripts/versionbump.sh"
   },
   "devDependencies": {
     "@types/node": ">=10"
