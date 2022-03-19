@@ -1,7 +1,7 @@
 {
     "name": "@hapipal/types-schmervice",
     "description": "TypeScript type definitions for @hapipal/schmervice",
-    "version": "0.0.1-alpha.0",
+    "version": "0.0.1-alpha.1",
     "types": "index.d.ts",
     "scripts": {
         "test": "tsc"

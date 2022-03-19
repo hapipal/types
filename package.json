@@ -31,7 +31,8 @@
     "test:workspaces": "npm run test --workspaces --if-present",
     "libcheck": "node ./scripts/properLibSetup",
     "prepare": "husky install",
-    "bump": "./scripts/versionbump.sh"
+    "bump": "./scripts/versionbump.sh",
+    "release": "./scripts/publish.sh"
   },
   "devDependencies": {
     "@types/node": ">=10"
