@@ -37,13 +37,13 @@ export function ServiceFactory(server: HapiServer, options: object): ServiceRegi
 // options is any because it's left to the implementer to define based on usage
 export type ServiceOptions = any;
 
-export class Service {
+export class Service<O = ServiceOptions> {
     static caching: ServiceCachingOptions;
     static [name]: string;
     static [sandbox]: ServiceSandbox;
     server: HapiServer;
-    options: ServiceOptions;
-    constructor(server: HapiServer, options: ServiceOptions);
+    options: O;
+    constructor(server: HapiServer, options: O);
     // object matches https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/hapi__hapi/index.d.ts#L3104
     // null matches else case in schmervice
     get context(): object | null;
